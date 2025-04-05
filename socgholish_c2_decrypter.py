@@ -62,6 +62,7 @@ def run (data):
     replacement_aesnew = "cipher = AES.new("
     pattern_decode = r'return\s*decode[a-zA-Z0-9_]+\(data\)'
     replacement_decode  = "return data.decode('utf-8')"
+    key_pattern = re.compile("return b'(?P<hw_key>[0-9A-Z]{30,35})'")
     
     for i in range(1000):
         # Some checks for strings typically in the final payload
@@ -89,7 +90,6 @@ def run (data):
         tmp_data = re.sub(pattern_decode, replacement_decode, tmp_data, 1)
 
         # Find and replace hw key for current run - this algorithm may change in future payloads, we observed static before
-        key_pattern = re.compile("return b'(?P<hw_key>[0-9A-Z]{30,35})'")
         matches = key_pattern.search(tmp_data)
         if matches is not None:
             pattern_hwkey = r'hw_key\s=\sget_hw_key\(\)'
