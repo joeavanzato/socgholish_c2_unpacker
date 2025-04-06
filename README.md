@@ -1,6 +1,6 @@
 ## **Only use this in a contained environment to ensure no accidental C2 connection is established.**
 
-Basic decryption routine for the encrypted Python reverse shell payload typically dropped as a Scheduled Task as discussed at https://www.trendmicro.com/en_us/research/25/c/socgholishs-intrusion-techniques-facilitate-distribution-of-rans.html
+Basic unpacking routine for the encrypted Python reverse shell payload typically dropped as a Scheduled Task as discussed at https://www.trendmicro.com/en_us/research/25/c/socgholishs-intrusion-techniques-facilitate-distribution-of-rans.html
 
 Just run the script with the payload as the first argument like 'python socgholish_c2_decrypter.py payload.jar'
 
